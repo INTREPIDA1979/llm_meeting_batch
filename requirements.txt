@@ -1,0 +1,12 @@
+SQLAlchemy==2.0.24
+PyMySQL==1.1.1
+gunicorn==22.0.0
+cloud-sql-python-connector==1.2.4
+functions-framework==3.5.0
+Werkzeug==2.3.7
+langchain==0.2.16
+langgraph==0.2.19
+langchain-google-genai==1.0.10
+langchain_google_vertexai
+typing
+google.cloud.logging
