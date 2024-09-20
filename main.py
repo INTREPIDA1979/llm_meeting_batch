@@ -122,7 +122,7 @@ def conversation_manager(state: AppState):
     history = state.get("history",[])
     model = llm
     
-    greeting_msg = f"""司会: 今日は[{thema}]についてのみなさんの活発なご意見を聞かせて下さい！"""
+    greeting_msg = f"""ファシリテーター: 今日は[{thema}]についてのみなさんの活発なご意見を聞かせて下さい！"""
     speakers_names_str = ",".join(SPEAKERS_NAMES)
     
     if speak_count > max_speak_count:
