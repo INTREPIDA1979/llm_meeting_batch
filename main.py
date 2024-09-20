@@ -21,11 +21,10 @@ logger = logging.getLogger()
 
 db = None
 
-GOOGLE_AI="Gemini"
-#GOOGLE_AI="VertexAI"
+GOOGLE_AI=os.environ.get("GOOGLE_AI")
 
 # LLM初期化
-if GOOGLE_AI == "Gemini":
+if GOOGLE_AI == "GEMINI":
     llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
 else:
     llm = VertexAI(model="gemini-1.5-flash")
@@ -159,7 +158,7 @@ def conversation_manager(state: AppState):
 
     # 出力テキストのパース処理
     print(response)
-    if GOOGLE_AI == "Gemini":
+    if GOOGLE_AI == "GEMINI":
         generate_text = response.content.replace("次の発言者:","").strip().replace("'","").replace("*","") # GeminiAPI
     else:
         generate_text = response.replace("次の発言者:","").strip().replace("'","").replace("*","") # VertexAI TODO うまくSpeakerが取れていない。
@@ -205,7 +204,7 @@ def conversation_summarizer(state: AppState):
         ]
     )
     
-    if GOOGLE_AI == "Gemini":
+    if GOOGLE_AI == "GEMINI":
         return{ "conversation_summary": response.content } # Gemini API
     else:
         return{"conversation_summary": response} # VertexAI
