@@ -99,10 +99,12 @@ def speaker(state: AppState):
         ]
     )
     print(str(response))
-    response_msg = str(response.content) # Gemini API
-    #response_msg = str(response) # VertexAI
+    
+    if GOOGLE_AI == "GEMINI": # Geminiの場合はresp.content  VertexAIの場合はresp
+        response = response.content
+
     return {
-        "history" : [f"{speaker_name}: {response_msg}"], 
+        "history" : [f"{speaker_name}: {response}"], 
         "speak_count" : speak_count + 1
     }
 
